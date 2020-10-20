@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.rayson.eldoretonlinemarketadmin.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_orders"
+        android:name="com.rayson.eldoretonlinemarketadmin.ui.orders.OrdersFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_orders" />
+
+    <fragment
+        android:id="@+id/nav_staff"
+        android:name="com.rayson.eldoretonlinemarketadmin.ui.staff.StaffFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_staff" />
+    <fragment
+        android:id="@+id/nav_items"
+        android:name="com.rayson.eldoretonlinemarketadmin.ui.items.ItemsFragment"
+        android:label="Items"
+        tools:layout="@layout/fragment_items" />
+    <fragment
+        android:id="@+id/nav_allItems"
+        android:name="com.rayson.eldoretonlinemarketadmin.ui.categoriesitems.AllItems"
+        android:label="fragment_all_items"
+        tools:layout="@layout/fragment_all_items" />
+    <fragment
+        android:id="@+id/nav_maps"
+        android:name="com.rayson.eldoretonlinemarketadmin.ui.maps.MapsFragment"
+        android:label="Maps"
+        tools:layout="@layout/fragment_maps" />
+</navigation>

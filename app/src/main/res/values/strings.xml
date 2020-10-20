@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">EldoretOnlineMarket</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Orders</string>
+    <string name="menu_slideshow">Staff</string>
+    <string name="intent_product">intent_product</string>
+    <string name="content_desc">Image</string>
+    <string name="name_of_menu">Name of Menu</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="items">Items</string>
+    <string name="categories">Categories</string>
+    <string name="maps">Maps</string>
+    <string name="title_activity_transporter">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>
