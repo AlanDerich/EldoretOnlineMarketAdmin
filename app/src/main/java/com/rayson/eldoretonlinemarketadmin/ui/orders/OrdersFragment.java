@@ -22,6 +22,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.rayson.eldoretonlinemarketadmin.Common.OrderIds;
 import com.rayson.eldoretonlinemarketadmin.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -45,6 +47,7 @@ public class OrdersFragment extends Fragment implements View.OnClickListener,
     //vars
     OrdersAdapter mAdapter;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
     List<String> allFilters=new ArrayList<>();
     private RelativeLayout mainLayout;
     List<OrderIds> mOrders;

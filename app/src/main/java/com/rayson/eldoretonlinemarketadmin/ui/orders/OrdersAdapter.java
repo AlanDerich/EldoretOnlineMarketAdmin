@@ -17,6 +17,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.rayson.eldoretonlinemarketadmin.Common.OrderIds;
 import com.rayson.eldoretonlinemarketadmin.R;
 import com.rayson.eldoretonlinemarketadmin.ui.ViewOrderDetailsFragment;
@@ -33,7 +35,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder> {
-
+    private FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
     private static final String TAG = "MainRecyclerViewAd";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     //vars

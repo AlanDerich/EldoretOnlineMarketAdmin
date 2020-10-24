@@ -29,7 +29,7 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private FirebaseUser mUser;
+    private FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
     private View mHeaderView;
     private TextView tvUsername,tvEmail;
     private ImageView imgUser;
@@ -63,10 +63,12 @@ public class MainActivity extends AppCompatActivity {
         this.menu = menu;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        tvEmail.setText(mUser.getEmail());
-        tvUsername.setText(mUser.getDisplayName());
-        //imgUser.setImageURI(mUser.getPhotoUrl());
-        Picasso.with(this).load(mUser.getPhotoUrl()).into(imgUser);
+        if (mUser!=null){
+            tvEmail.setText(mUser.getEmail());
+            tvUsername.setText(mUser.getDisplayName());
+            //imgUser.setImageURI(mUser.getPhotoUrl());
+            Picasso.with(this).load(mUser.getPhotoUrl()).into(imgUser);
+        }
         return true;
     }
     @Override
@@ -103,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
     private void checkLogIn() {
-        mUser = FirebaseAuth.getInstance().getCurrentUser();
         if (mUser != null) {
 
         } else {

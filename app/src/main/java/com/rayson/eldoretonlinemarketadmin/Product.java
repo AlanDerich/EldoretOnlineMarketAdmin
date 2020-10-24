@@ -1,7 +1,7 @@
 package com.rayson.eldoretonlinemarketadmin;
 
 public class Product {
-    private String name, Image, description, price, menuId;
+    private String name, Image, description, price, menuId,username;
 
     public Product() {
     }
@@ -14,12 +14,21 @@ public class Product {
         this.menuId = menuId;
     }
 
-    public Product(String name, String image, String description, String price, String menuId) {
+    public Product(String name, String image, String description, String price, String menuId, String username) {
         this.name = name;
         Image = image;
         this.description = description;
         this.price = price;
         this.menuId = menuId;
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName() {

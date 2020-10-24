@@ -23,6 +23,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.rayson.eldoretonlinemarketadmin.Category;
 import com.rayson.eldoretonlinemarketadmin.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -48,6 +50,7 @@ public class ItemsFragment extends Fragment {
     ProgressBar progressBar;
     List<Category> mCategory;
     RelativeLayout rootLayout_items_fragment;
+    private FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
     private Context mContext;
     StorageReference storageReference;
     FirebaseStorage storage;
@@ -91,7 +94,7 @@ public class ItemsFragment extends Fragment {
         rvCategories.setLayoutManager(gridLayoutManager);
     }
     private void getCategoryList(){
-        db.collection("AllCategories").get()
+        db.collection("AllCategories").whereEqualTo("username",mUser.getEmail()).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {

@@ -26,6 +26,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.rayson.eldoretonlinemarketadmin.Product;
 import com.rayson.eldoretonlinemarketadmin.R;
 import com.rayson.eldoretonlinemarketadmin.ui.items.ItemsFragment;
@@ -50,6 +52,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class AllItems extends Fragment implements AllItemsAdapter.OnItemsClickListener{
     String categoryId="";
+    private FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
     ProgressBar progressBar;
     List<Product> mCategory;
     private Context mContext;
@@ -172,7 +175,7 @@ public class AllItems extends Fragment implements AllItemsAdapter.OnItemsClickLi
                 if(newProduct !=  null)
                 {
 
-                    db.collection(isIherited).document(newProduct.getName()).collection("AllItems").document(newProduct.getName())
+                    db.collection(isIherited).document(newProduct.getName()).collection("AllItems").document(mUser.getEmail())
                             .set(newProduct)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -225,6 +228,7 @@ public class AllItems extends Fragment implements AllItemsAdapter.OnItemsClickLi
                                     newProduct.setName(edtName.getText().toString());
                                     newProduct.setDescription(edtDescription.getText().toString());
                                     newProduct.setPrice(edtPrice.getText().toString());
+                                    newProduct.setUsername(mUser.getEmail());
                                     if (!(isIherited.isEmpty())){
                                         newProduct.setMenuId(isIherited);
                                     }
