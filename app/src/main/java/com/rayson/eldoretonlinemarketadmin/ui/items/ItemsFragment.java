@@ -94,7 +94,7 @@ public class ItemsFragment extends Fragment {
         rvCategories.setLayoutManager(gridLayoutManager);
     }
     private void getCategoryList(){
-        db.collection("AllCategories").whereEqualTo("username",mUser.getEmail()).get()
+        db.collection("AllCategories").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
