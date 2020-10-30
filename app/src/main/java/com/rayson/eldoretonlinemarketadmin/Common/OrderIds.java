@@ -1,20 +1,29 @@
 package com.rayson.eldoretonlinemarketadmin.Common;
 
 public class OrderIds {
-    String orderId,username,dateAndTime,latitude,longitude,date;
+    String orderId,username,dateAndTime,latitude,longitude,date,ownerEmail;
     int totalAmount,status;
     public OrderIds() {
     }
 
-    public OrderIds(String orderId, String username, String dateAndTime, String latitude, String longitude, String date, int totalAmount, int status) {
+    public OrderIds(String orderId, String username, String dateAndTime, String latitude, String longitude, String date, String ownerEmail, int totalAmount, int status) {
         this.orderId = orderId;
         this.username = username;
         this.dateAndTime = dateAndTime;
         this.latitude = latitude;
         this.longitude = longitude;
         this.date = date;
+        this.ownerEmail = ownerEmail;
         this.totalAmount = totalAmount;
         this.status = status;
+    }
+
+    public String getOwnerEmail() {
+        return ownerEmail;
+    }
+
+    public void setOwnerEmail(String ownerEmail) {
+        this.ownerEmail = ownerEmail;
     }
 
     public String getDate() {

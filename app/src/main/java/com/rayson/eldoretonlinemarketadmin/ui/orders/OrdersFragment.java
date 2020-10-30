@@ -57,6 +57,7 @@ public class OrdersFragment extends Fragment implements View.OnClickListener,
     private Spinner spCategories;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private ProgressBar pbOrders;
+    private String userEmail = mUser.getEmail();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -128,7 +129,7 @@ public class OrdersFragment extends Fragment implements View.OnClickListener,
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy",Locale.US);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy h:mm a", Locale.US);
         String formattedDate = sdf.format(c);
-        db.collectionGroup("allOrderIds").whereEqualTo("date",date).get()
+        db.collectionGroup("allOrderIds").whereEqualTo("date",date).whereEqualTo("ownerEmail",userEmail).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -165,7 +166,7 @@ public class OrdersFragment extends Fragment implements View.OnClickListener,
         String formattedDateAndTime = sdf.format(c);
         String[] dts= formattedDateAndTime.split(" ");
         String fdddd = dts[0];
-        db.collection("AllOrders").document(encode(fdddd)).collection("allOrderIds").get()
+        db.collection("AllOrders").document(encode(fdddd)).collection("allOrderIds").whereEqualTo("ownerEmail",userEmail).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -188,7 +189,7 @@ public class OrdersFragment extends Fragment implements View.OnClickListener,
     }
 
     private void getPendingOrders() {
-        db.collectionGroup("allOrderIds").whereEqualTo("status",0).get()
+        db.collectionGroup("allOrderIds").whereEqualTo("status",0).whereEqualTo("ownerEmail",userEmail).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -211,7 +212,7 @@ public class OrdersFragment extends Fragment implements View.OnClickListener,
                 });
     }
     private void getOrdersWaitingDelivery() {
-        db.collectionGroup("allOrderIds").whereEqualTo("status",1).get()
+        db.collectionGroup("allOrderIds").whereEqualTo("status",1).whereEqualTo("ownerEmail",userEmail).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -234,7 +235,7 @@ public class OrdersFragment extends Fragment implements View.OnClickListener,
                 });
     }
     private void getDeliveredOrders() {
-        db.collectionGroup("allOrderIds").whereEqualTo("status",2).get()
+        db.collectionGroup("allOrderIds").whereEqualTo("status",2).whereEqualTo("ownerEmail",userEmail).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -270,7 +271,7 @@ public class OrdersFragment extends Fragment implements View.OnClickListener,
 
     private void getOrders(){
         //mProducts.addAll(Arrays.asList(Products.FEATURED_PRODUCTS));
-        db.collectionGroup("allOrderIds").get()
+        db.collectionGroup("allOrderIds").whereEqualTo("ownerEmail",userEmail).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -288,6 +289,7 @@ public class OrdersFragment extends Fragment implements View.OnClickListener,
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(mContext, "Something went terribly wrong." + e, Toast.LENGTH_LONG).show();
+                        Log.w("MainActivity","Error "+ e);
                     }
                 });
     }

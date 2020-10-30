@@ -119,7 +119,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
 //        }
 
 
-        OrderIds orderIds=new OrderIds(mOrders.get(pos).getOrderId(),mOrders.get(pos).getUsername(),mOrders.get(pos).getDateAndTime(),mOrders.get(pos).getLatitude(),mOrders.get(pos).getLongitude(),formattedDateAndTime,mOrders.get(pos).getTotalAmount(),1);
+        OrderIds orderIds=new OrderIds(mOrders.get(pos).getOrderId(),mOrders.get(pos).getUsername(),mOrders.get(pos).getDateAndTime(),mOrders.get(pos).getLatitude(),mOrders.get(pos).getLongitude(),formattedDateAndTime,mOrders.get(pos).getOwnerEmail(),mOrders.get(pos).getTotalAmount(),1);
         db.collection("AllOrders").document(encode(formattedDateAndTime)).collection("allOrderIds").document(mOrders.get(pos).getOrderId())
                 .set(orderIds)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

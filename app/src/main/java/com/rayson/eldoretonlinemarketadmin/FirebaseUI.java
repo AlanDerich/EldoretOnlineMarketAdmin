@@ -67,6 +67,7 @@ public class FirebaseUI extends AppCompatActivity {
             }
             if(resultCode == RESULT_CANCELED){
                 displayMessage(("Sign in failed"));
+                finish();
             }
             return;
         }
