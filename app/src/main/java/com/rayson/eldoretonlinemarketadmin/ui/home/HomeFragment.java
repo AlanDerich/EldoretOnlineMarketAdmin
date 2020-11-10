@@ -23,7 +23,7 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     MainRecyclerViewAdapter mAdapter;
-    private static final int NUM_COLUMNS = 2;
+    private static final int NUM_COLUMNS = 1;
     private ArrayList<Menus> mProducts;
     private Context mContext;
     private ConstraintLayout mainLayout;
@@ -53,13 +53,9 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setVisibility(View.VISIBLE);
     }
     private void getProducts(){
-        Menus menuOrders=new Menus("orders",mContext.getResources().getDrawable(R.drawable.ordersn));
-        Menus menuStaff=new Menus("Staff",mContext.getResources().getDrawable(R.drawable.staff));
         Menus menuItems=new Menus("Products",getContext().getResources().getDrawable(R.drawable.basket));
 //        mProducts.addAll(Arrays.asList(menuOrders,menuStaff,menuItems));
         mProducts=new ArrayList<>();
-        mProducts.add(menuOrders);
-        mProducts.add(menuStaff);
         mProducts.add(menuItems);
     }
 }

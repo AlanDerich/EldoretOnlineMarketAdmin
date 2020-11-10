@@ -60,19 +60,8 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 mainL.removeAllViews();
                 switch (position) {
+
             case 0:
-                Fragment newFragment = new OrdersFragment();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,newFragment).addToBackStack(null).commit();
-                break;
-            case 1:
-                Fragment fragmentStaff = new StaffFragment();
-                FragmentTransaction transactionStaff = activity.getSupportFragmentManager().beginTransaction();
-                transactionStaff.replace(R.id.nav_host_fragment,fragmentStaff);
-                transactionStaff.addToBackStack(null);
-                //newFragment.setArguments(args);
-                transactionStaff.commit();
-                break;
-            case 2:
                 Fragment fragmentItems = new ItemsFragment();
                 FragmentTransaction transactionItems = activity.getSupportFragmentManager().beginTransaction();
                 transactionItems.replace(R.id.nav_host_fragment,fragmentItems);
