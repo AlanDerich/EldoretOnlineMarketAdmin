@@ -54,8 +54,10 @@ public class HomeFragment extends Fragment {
     }
     private void getProducts(){
         Menus menuItems=new Menus("Products",getContext().getResources().getDrawable(R.drawable.basket));
+        Menus menuStaff=new Menus("Staff",mContext.getResources().getDrawable(R.drawable.staff));
 //        mProducts.addAll(Arrays.asList(menuOrders,menuStaff,menuItems));
         mProducts=new ArrayList<>();
         mProducts.add(menuItems);
+        mProducts.add(menuStaff);
     }
 }

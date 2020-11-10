@@ -69,6 +69,14 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
                 //newFragment.setArguments(args);
                 transactionItems.commit();
                 break;
+            case 1:
+                        Fragment fragmentStaff = new StaffFragment();
+                        FragmentTransaction transactionStaff = activity.getSupportFragmentManager().beginTransaction();
+                        transactionStaff.replace(R.id.nav_host_fragment,fragmentStaff);
+                        transactionStaff.addToBackStack(null);
+                        //newFragment.setArguments(args);
+                        transactionStaff.commit();
+                        break;
 //            case 3:
 //                holder.serviceName.setText(listServices[3]);
 //                holder.imgService.setImageResource(R.drawable.gardening);
